@@ -15,8 +15,9 @@
             display: none !important;
         }
         </style>
-        @livewireStyles
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.2/dist/alpine.min.js" defer></script> --}}
+        
+        @livewireStyles
     </head>
     <body>
       <div class="container mx-auto px-4">
@@ -24,6 +25,6 @@
        {{--<livewire:alert /> --}}
       @yield('content')
       </div>
-    {{-- @livewireScripts --}}
+      @livewireScripts
     </body>
 </html>
