@@ -14,10 +14,10 @@
         [x-cloak] {
             display: none !important;
         }
-        </style>
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.2/dist/alpine.min.js" defer></script> --}}
+        </style>--}}
         
         @livewireStyles
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.2/dist/alpine.min.js" defer></script> 
     </head>
     <body>
       <div class="container mx-auto px-4">
