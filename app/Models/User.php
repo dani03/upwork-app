@@ -42,11 +42,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role(){
+    public function role()
+    {
         return $this->belongsTo(role::class);
     }
 
-    public function jobs(){
+    public function jobs()
+    {
         $this->hasMany(Job::class);
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Job::class);
     }
 }
