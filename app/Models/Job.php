@@ -14,6 +14,10 @@ class Job extends Model
         return $query->where('status', 1);
     }
 
+    public function proposals()
+    {
+      return $this->hasMany(Proposal::class);
+    }
     public function user()
     {
         return $this->belongsTo(User::class);

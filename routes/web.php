@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ProposalController;
+use App\Models\Proposal;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +19,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', function() {
-    return view('home');
-})->middleware('auth')->name('home');
+
 
 Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
-Route::get('jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
+    Route::post('/submit/{job}', [ProposalController::class, 'store'])->name('proposals.store');
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
+});
+Route::group(['middleware' => ['auth', 'proposal']], function () {
+    Route::post('/submit/{job}', [ProposalController::class, 'store'])->name('proposals.store');
+   
+});

@@ -49,7 +49,11 @@ class User extends Authenticatable
 
     public function jobs()
     {
-        $this->hasMany(Job::class);
+       return $this->hasMany(Job::class);
+    }
+    public function proposals()
+    {
+       return $this->hasMany(Proposal::class);
     }
 
     public function likes()
