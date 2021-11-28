@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProposalController;
 use App\Models\Proposal;
@@ -25,6 +26,9 @@ Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
+    Route::get('confirmProposal/{proposal}', [ProposalController::class, 'confirm'])->name('confirm.proposal');
+    Route::get('/conversations', [ConversationController::class, 'index'])->name('conversation.index');
+    Route::get('/conversations/show/{conversation}', [ConversationController::class, 'show'])->name('conversation.show');
     Route::post('/submit/{job}', [ProposalController::class, 'store'])->name('proposals.store');
     Route::get('/home', function () {
         return view('home');
@@ -34,3 +38,4 @@ Route::group(['middleware' => ['auth', 'proposal']], function () {
     Route::post('/submit/{job}', [ProposalController::class, 'store'])->name('proposals.store');
    
 });
+
